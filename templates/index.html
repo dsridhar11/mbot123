@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MediMate AI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='frontpage.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo" aria-label="MediMate Logo"> MediMate</div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
+        <li><a href="#features"><i class="fas fa-cogs"></i> Features</a></li>
+        <li><a href="#how-it-works"><i class="fas fa-question-circle"></i> How it Works</a></li>
+        <li><a href="#testimonials"><i class="fas fa-comment-dots"></i> Testimonials</a></li>
+        <li><a href="#get-started" class="btn nav-btn">Get Started</a></li>
+        <li><a href="/chatbot" class="btn-primary">Try the MediMate Bot</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>AI-Powered <span>Medical Assistance</span> for Better Health</h1>
+      <p>MediMate revolutionizes healthcare with cutting-edge AI. Get instant medical insights, symptom analysis, and 24/7 monitoring.</p>
+      <div class="hero-buttons">
+        <a href="#get-started" class="btn-primary">Start Free Trial</a>
+        <a href="#features" class="btn-secondary">Watch Demo</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="C:\Users\DELL\Downloads\Medicine doctor touching tablet with digital healthcare and network connection and hologram modern virtual screen interface icons, Medical technology and futuristic concept_.jpg" alt="Medical Banner with doctor" loading="lazy">
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about-section">
+    <div class="about-container">
+      <div class="about-image">
+        <img src="C:\Users\DELL\Downloads\Focus on digital health leads to emergence of new roles in healthtech.jpg" alt="About MediMate" loading="lazy">
+      </div>
+      <div class="about-content">
+        <h2>About <span>MediMate AI</span></h2>
+        <p class="about-subtitle">
+          Your intelligent partner in health – redefining how healthcare is delivered through the power of AI.
+        </p>
+        <ul class="about-list">
+          <li><i class="fas fa-check-circle"></i> Designed to assist patients, doctors, and providers.</li>
+          <li><i class="fas fa-check-circle"></i> Offers 24/7 access to AI-based health insights.</li>
+          <li><i class="fas fa-check-circle"></i> Blends technology and empathy for smarter care.</li>
+          <li><i class="fas fa-check-circle"></i> Built using advanced models like GPT-4 and medical datasets (UMLS).</li>
+          <li><i class="fas fa-check-circle"></i> Ensures data privacy with secure, encrypted medical records.</li>
+          <li><i class="fas fa-check-circle"></i> Continuously learns and improves through machine learning feedback.</li>
+          <li><i class="fas fa-check-circle"></i> Supports multilingual interaction for global accessibility.</li>
+          <li><i class="fas fa-check-circle"></i> Integrates with wearable devices for real-time health monitoring.</li>
+          <li><i class="fas fa-check-circle"></i> Enables early detection of critical conditions through predictive analysis.</li>
+
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="features-section">
+    <h2>Advanced <span>Features</span></h2>
+    <p class="subtitle">Discover how MediMate revolutionizes healthcare with cutting-edge AI technology</p>
+    <div class="features-container">
+      <div class="feature-card">
+        <i class="fas fa-brain feature-icon"></i>
+        <h3>AI Symptom Checker</h3>
+        <p>Get accurate preliminary diagnosis based on your symptoms and medical history with our advanced AI trained on millions of medical cases.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-microphone-alt feature-icon"></i>
+        <h3>Voice Consultation</h3>
+        <p>Speak naturally about your symptoms – our AI listens and responds in real-time for a fluid conversation experience.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-file-medical feature-icon"></i>
+        <h3>Smart Health Reports</h3>
+        <p>Generate comprehensive health reports with AI analysis and track your medical progress over time.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section id="how-it-works" class="how-section">
+    <h2>How <span>MediMate</span> Works</h2>
+    <p class="subtitle">Get started with MediMate in three simple steps and take control of your health</p>
+    <div class="steps-container">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <i class="fas fa-user-plus step-icon"></i>
+        <h3>Create Your Profile</h3>
+        <p>Sign up in seconds and set up your personalized health profile with your medical history and preferences.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <i class="fas fa-robot step-icon"></i>
+        <h3>AI Health Assessment</h3>
+        <p>Our AI analyzes your symptoms and medical data to provide personalized health insights and recommendations.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <i class="fas fa-chart-line step-icon"></i>
+        <h3>Monitor & Improve</h3>
+        <p>Track your health progress with real-time feedback and receive personalized recommendations for better health.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section id="benefits" class="benefits-section">
+    <h2>Who Can <span>Benefit?</span></h2>
+    <p class="subtitle">MediMate is designed for diverse users across various healthcare needs</p>
+    <div class="benefit-cards">
+      <div class="benefit-card">
+        <i class="fas fa-user-injured benefit-icon"></i>
+        <h3>Patients</h3>
+        <ul>
+          <li><i class="fas fa-check-circle"></i> 24/7 access to medical information</li>
+          <li><i class="fas fa-check-circle"></i> Preliminary symptom analysis</li>
+          <li><i class="fas fa-check-circle"></i> Medication reminders</li>
+          <li><i class="fas fa-check-circle"></i> Health tracking and monitoring</li>
+          <li><i class="fas fa-check-circle"></i> Personalized health recommendations</li>
+        </ul>
+      </div>
+      <div class="benefit-card">
+        <i class="fas fa-user-md benefit-icon"></i>
+        <h3>Doctors</h3>
+        <ul>
+          <li><i class="fas fa-check-circle"></i> AI-assisted diagnosis</li>
+          <li><i class="fas fa-check-circle"></i> Patient data analysis</li>
+          <li><i class="fas fa-check-circle"></i> Medical research assistance</li>
+          <li><i class="fas fa-check-circle"></i> Treatment plan suggestions</li>
+          <li><i class="fas fa-check-circle"></i> Time-saving documentation</li>
+        </ul>
+      </div>
+      <div class="benefit-card">
+        <i class="fas fa-hospital-alt benefit-icon"></i>
+        <h3>Healthcare Providers</h3>
+        <ul>
+          <li><i class="fas fa-check-circle"></i> Reduce unnecessary visits</li>
+          <li><i class="fas fa-check-circle"></i> Triage patients effectively</li>
+          <li><i class="fas fa-check-circle"></i> Improve patient engagement</li>
+          <li><i class="fas fa-check-circle"></i> Enhance telemedicine services</li>
+          <li><i class="fas fa-check-circle"></i> Data-driven healthcare insights</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="testimonials-section">
+    <h2>What Our <span>Users Say</span></h2>
+    <p class="subtitle">Hear from people who have transformed their healthcare experience with MediMate</p>
+    <div class="testimonial-container">
+      <div class="testimonial-card">
+        <p>"MediMate has completely transformed how I manage my chronic condition. The AI’s insights are so accurate that my doctor was impressed with the data I brought to my appointment."</p>
+        <div class="testimonial-author">
+          <img src="https://i.pravatar.cc/100?img=47" alt="Sarah Johnson">
+          <div>
+            <h4>Sarah Johnson</h4>
+            <span>Diabetes Patient</span>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p>"As a busy physician, I need tools that save time while improving patient care. This platform has been invaluable for preliminary assessments and patient education."</p>
+        <div class="testimonial-author">
+          <img src="https://i.pravatar.cc/100?img=12" alt="Dr. Michael Chen">
+          <div>
+            <h4>Dr. Michael Chen</h4>
+            <span>General Practitioner</span>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p>"I’ve recommended MediMate to all my patients and seen remarkable improvements in their health literacy and engagement. It’s like having a medical assistant available 24/7."</p>
+        <div class="testimonial-author">
+          <img src="https://i.pravatar.cc/100?img=32" alt="Dr. Emily Rodriguez">
+          <div>
+            <h4>Dr. Emily Rodriguez</h4>
+            <span>Cardiologist</span>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="cta-section" id="get-started">
+    <h2>Ready to Transform Your Healthcare Experience?</h2>
+    <p>Join MediMate today and experience the future of personalized medical assistance.</p>
+    <p>Your journey to better health is just one click away</p>
+    <div class="cta-buttons">
+      <a href="#" class="btn-primary">Start Free Trial</a>
+      <a href="#features" class="btn-outline">Learn More</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>MediMate</h3>
+        <p>Revolutionizing healthcare with AI-powered technology to help you monitor your health, understand symptoms, and take action in real-time.</p>
+      </div>
+      <div class="footer-column">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Contact Us</h4>
+        <ul>
+          <li><i class="fas fa-map-marker-alt"></i> 123 Medical Drive, Health City, HC 12345</li>
+          <li><i class="fas fa-envelope"></i> info@medimate.com</li>
+          <li><i class="fas fa-phone"></i> +91 99999 99999</li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
