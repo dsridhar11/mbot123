@@ -1,1 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Medimate Chatbot</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="static/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+
+<body>
+  <!-- SIDEBAR -->
+  <div class="sidebar hidden" id="sidebar">
+    <h2>📌 Reports</h2>
+    <ul id="report-list" class="report-list"></ul>
+  </div>
+
+  <!-- MAIN AREA -->
+  <div class="main">
+    <nav class="navbar">
+      <div class="navbar-left">
+        <button id="sidebar-toggle" title="Toggle Sidebar" aria-label="Toggle Sidebar">☰</button>
+        <h1>Medimate</h1>
+      </div>
+      <button id="theme-toggle" title="Toggle Theme" aria-label="Toggle Theme">🌙</button>
+    </nav>
+
+    <div class="chat-container">
+      <div id="chat-box" class="chat-box"></div>
+
+      <div class="input-container">
+        <input type="text" id="user-input" placeholder="Type your symptoms..." onkeydown="handleKey(event)" aria-label="Type your message" />
+        <button onclick="sendMessage()" type="button" aria-label="Send message">Send</button>
+      </div>
+
+      <div id="report-display" class="report-display" style="display: none;">
+        <button onclick="closeReport()" class="close-report-btn" aria-label="Close report">❌ Close</button>
+        <div id="report-content"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    async function sendMessage() {
+      closeReport();
+      const input = document.getElementById("user-input");
+      const message = input.value.trim();
+      if (!message) return;
+
+      appendMessage("user", message);
+      input.value = "";
+
+      try {
+        const res = await fetch("/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message }),
+        });
+
+        const data = await res.json();
+        if (data.reply) appendMessage("bot", data.reply);
+        fetchReports();
+      } catch (err) {
+        console.error("Error:", err);
+        appendMessage("bot", "Oops! Something went wrong.");
+      }
+    }
+
+    function appendMessage(sender, text) {
+      const box = document.getElementById("chat-box");
+      const msg = document.createElement("div");
+      msg.className = sender;
+      msg.innerHTML = `<div class="bubble">${marked.parse(text, { sanitize: true })}</div>`;
+      box.appendChild(msg);
+      box.scrollTop = box.scrollHeight;
+    }
+
+    function handleKey(event) {
+      if (event.key === "Enter") sendMessage();
+    }
+
+    async function fetchReports() {
+      try {
+        const res = await fetch("/reports");
+        const data = await res.json();
+        const reportList = document.getElementById("report-list");
+        reportList.innerHTML = "";
+        data.reports.forEach((name) => {
+          const li = document.createElement("li");
+          li.innerText = name.replace("summary_", "").replace(".txt", "").replaceAll("_", ":");
+          li.onclick = () => {
+            viewReport(name);
+            if (window.innerWidth < 768) {
+              document.getElementById("sidebar").classList.add("hidden");
+              document.getElementById("sidebar-toggle").textContent = "☰";
+            }
+          };
+          reportList.appendChild(li);
+        });
+      } catch (err) {
+        console.error("Failed to fetch reports:", err);
+      }
+    }
+
+    async function viewReport(filename) {
+      try {
+        const res = await fetch(`/report/${filename}`);
+        const text = await res.text();
+        const display = document.getElementById("report-display");
+        const content = document.getElementById("report-content");
+
+        content.innerText = text;
+        display.style.display = "block";
+      } catch (err) {
+        console.error("Failed to load report:", err);
+      }
+    }
+
+    function closeReport() {
+      document.getElementById("report-display").style.display = "none";
+      document.getElementById("report-content").innerText = "";
+    }
+
+    // Theme toggle with localStorage
+    if (localStorage.getItem("theme") === "light") {
+      document.body.classList.add("light-mode");
+      document.getElementById("theme-toggle").textContent = "🌞";
+    }
+
+    document.getElementById("theme-toggle").onclick = () => {
+      const isLight = document.body.classList.toggle("light-mode");
+      document.getElementById("theme-toggle").textContent = isLight ? "🌞" : "🌙";
+      localStorage.setItem("theme", isLight ? "light" : "dark");
+    };
+
+    // Sidebar toggle with icon update
+    const sidebarToggle = document.getElementById("sidebar-toggle");
+    const sidebar = document.getElementById("sidebar");
+
+    sidebarToggle.addEventListener("click", () => {
+      const isHidden = sidebar.classList.toggle("hidden");
+      sidebarToggle.textContent = isHidden ? "☰" : "←";
+    });
+
+    window.onload = () => {
+      fetchReports();
+      closeReport();
+    };
+  </script>
+</body>
+</html>
 
