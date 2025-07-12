@@ -1,3 +1,4 @@
+// Send message and get AI reply
 document.querySelector(".send-btn").addEventListener("click", async () => {
   const input = document.querySelector(".input-wrapper input");
   const message = input.value.trim();
@@ -17,6 +18,7 @@ document.querySelector(".send-btn").addEventListener("click", async () => {
     const data = await res.json();
     if (data.reply) {
       addMessageToChat("bot", data.reply);
+      await loadReports();  // ⬅️ Update reports after AI reply
     } else {
       addMessageToChat("bot", "⚠️ Error: " + data.error);
     }
@@ -25,6 +27,7 @@ document.querySelector(".send-btn").addEventListener("click", async () => {
   }
 });
 
+// Add message to chat window
 function addMessageToChat(sender, text) {
   const chatBody = document.querySelector(".chat-body");
 
@@ -37,18 +40,22 @@ function addMessageToChat(sender, text) {
   chatBody.scrollTop = chatBody.scrollHeight;
 }
 
-// Load reports into sidebar
+// Load and refresh saved reports
 async function loadReports() {
   const container = document.querySelector(".chat-history");
-  if (!container) return;
+
+  // Remove old report list if exists
+  const oldList = container.querySelector(".report-list");
+  if (oldList) oldList.remove();
 
   try {
     const res = await fetch("/reports");
     const data = await res.json();
 
     const list = document.createElement("div");
+    list.className = "report-list";
     list.innerHTML = "<h3>Saved Reports</h3>";
-    
+
     if (data.reports.length === 0) {
       list.innerHTML += "<p>No reports yet.</p>";
     } else {
@@ -66,5 +73,5 @@ async function loadReports() {
   }
 }
 
-// Call it on page load
+// Load reports on page load
 window.addEventListener("DOMContentLoaded", loadReports);
