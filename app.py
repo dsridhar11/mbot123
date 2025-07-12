@@ -7,9 +7,9 @@ from datetime import datetime
 load_dotenv()
 
 app = Flask(__name__)
-app.secret_key = os.getenv("SECRET_KEY")  # Needed for session cookie
+app.secret_key = os.getenv("SECRET_KEY")
 
-# Configure Gemini
+# Configure Gemini API
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 genai.configure(api_key=GOOGLE_API_KEY)
 
@@ -36,17 +36,23 @@ def save_summary_report(summary_text):
         f.write(f"🗓 Report Generated: {timestamp}\n\n")
         f.write(summary_text)
 
-# === ROUTES ===
+# ==================
+# 📄 ROUTES
+# ==================
 
 @app.route("/")
 def homepage():
-    return render_template("index.html")  # Front page
+    return render_template("index.html")
+
+@app.route("/signup")
+def signup():
+    return render_template("create_account.html")
 
 @app.route("/chatbot")
 def chatbot():
     if 'history' not in session:
         session['history'] = []
-    return render_template("chatbot.html")  # Chatbot UI
+    return render_template("chatbot.html")
 
 @app.route("/chat", methods=["POST"])
 def chat():
@@ -55,13 +61,12 @@ def chat():
         if not user_input:
             return jsonify({"error": "No input provided"}), 400
 
-        # Load history
         if 'history' not in session:
             session['history'] = []
+
         raw_history = session['history']
         clean_history = []
 
-        # Normalize history format for Gemini
         for msg in raw_history:
             if 'parts' in msg:
                 clean_history.append(msg)
@@ -71,17 +76,14 @@ def chat():
                     "parts": [{"text": msg["text"]}]
                 })
 
-        # Chat and respond
         convo = model.start_chat(history=clean_history)
         convo.send_message(user_input)
         bot_reply = convo.last.text
 
-        # Append new messages
         clean_history.append({"role": "user", "parts": [{"text": user_input}]})
         clean_history.append({"role": "model", "parts": [{"text": bot_reply}]})
         session['history'] = clean_history
 
-        # Generate and store summary report
         summary_prompt = f"""
         Summarize the following patient input and medical assistant's reply. Format like a doctor's note.
 
@@ -116,6 +118,8 @@ def list_reports():
 def view_report(filename):
     return send_from_directory("reports", filename)
 
-# === MAIN ===
+# ==================
+# MAIN ENTRY POINT
+# ==================
 if __name__ == '__main__':
     app.run(debug=True)
