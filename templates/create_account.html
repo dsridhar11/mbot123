@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MediMate - Sign Up</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/create_account.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- your signup form remains the same -->
+</body>
+</html>
+
+  <div class="container">
+    <div class="left-panel">
+      <h1>Join Medimate Today</h1>
+      <p>Create your personalized health profile and start your journey to better healthcare.</p>
+      <ul class="features">
+        <li>✔️ AI-Powered Health Insights</li>
+        <li>✔️ Personalized Recommendations</li>
+        <li>✔️ 24/7 Medical Assistance</li>
+      </ul>
+    </div>
+
+    <div class="right-panel">
+      <form class="signup-form">
+        <h2>Create Account</h2>
+        <input type="text" placeholder="Full Name" required>
+        <input type="email" placeholder="Email Address" required>
+        <input type="password" placeholder="Password" required>
+        <small class="weak">Password Strength: Weak</small>
+        <input type="text" placeholder="dd-mm-yyyy" required>
+        <select required>
+          <option value="" disabled selected>Select your gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+        <label class="checkbox">
+          <input type="checkbox" required>
+          I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>, including <a href="#">HIPAA compliance</a>
+        </label>
+<a href="{{ url_for('chatbot') }}">
+  <button type="button">Create Account</button>
+</a>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
