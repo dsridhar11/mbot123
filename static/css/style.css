@@ -1,0 +1,274 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  color: #1e1e2f;
+  background-color: #f9fafe;
+  scroll-behavior: smooth;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Colors */
+:root {
+  --primary-blue: #007BFF;
+  --light-blue: #5bc0de;
+  --dark-blue: #0056b3;
+  --gray-light: #f4f6f8;
+  --gray-dark: #495057;
+  --text-color: #2d2d2d;
+  --white: #fff;
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--white);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: var(--primary-blue);
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: var(--gray-dark);
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+  color: var(--primary-blue);
+}
+
+.nav-btn {
+  background-color: var(--primary-blue);
+  color: var(--white) !important;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  font-weight: 600;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4rem 2rem;
+  background: linear-gradient(90deg, #e3f2fd 50%, #f9fafe 50%);
+}
+
+.hero-content {
+  max-width: 50%;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  color: var(--dark-blue);
+}
+
+.hero h1 span {
+  color: var(--primary-blue);
+}
+
+.hero p {
+  margin: 1rem 0;
+  font-size: 1.1rem;
+  color: var(--gray-dark);
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 0.7rem 1.4rem;
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: var(--primary-blue);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background-color: var(--dark-blue);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--primary-blue);
+  border: 2px solid var(--primary-blue);
+}
+
+.btn-secondary:hover {
+  background-color: var(--primary-blue);
+  color: var(--white);
+}
+
+.hero-image {
+  max-width: 45%;
+}
+
+/* Section Styles */
+section {
+  padding: 4rem 2rem;
+}
+
+h2 span {
+  color: var(--primary-blue);
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: var(--gray-dark);
+  margin-bottom: 2rem;
+}
+
+/* About Section */
+.about-container {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.about-list li {
+  margin-bottom: 0.8rem;
+  color: var(--gray-dark);
+}
+
+.about-list i {
+  color: var(--primary-blue);
+  margin-right: 0.5rem;
+}
+
+/* Features Section */
+.features-container,
+.steps-container,
+.benefit-cards,
+.testimonial-container {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.feature-card,
+.step-card,
+.benefit-card,
+.testimonial-card {
+  background-color: var(--white);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  flex: 1 1 30%;
+}
+
+.feature-icon,
+.step-icon,
+.benefit-icon {
+  font-size: 2rem;
+  color: var(--primary-blue);
+  margin-bottom: 1rem;
+}
+
+/* CTA Section */
+.cta-section {
+  background: var(--light-blue);
+  text-align: center;
+  color: var(--white);
+}
+
+.cta-buttons {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btn-outline {
+  padding: 0.7rem 1.4rem;
+  border: 2px solid var(--white);
+  border-radius: 25px;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.btn-outline:hover {
+  background: var(--white);
+  color: var(--primary-blue);
+}
+
+/* Footer */
+.footer {
+  background-color: #e9f3fa;
+  padding: 3rem 2rem;
+  color: var(--gray-dark);
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.footer-column h4 {
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.footer-column ul {
+  list-style: none;
+}
+
+.footer-column li {
+  margin-bottom: 0.6rem;
+  font-size: 0.95rem;
+}
+
+.footer-column li i {
+  margin-right: 0.5rem;
+  color: var(--primary-blue);
+}
+
+.footer-column a {
+  text-decoration: none;
+  color: var(--gray-dark);
+}
+
+.footer-column a:hover {
+  color: var(--primary-blue);
+}
